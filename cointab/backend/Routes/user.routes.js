@@ -13,8 +13,7 @@ userRoute.get("/", async (req, res) => {
   } else {
     query = { gender: gender };
   }
-  console.log(query);
-  console.log(gender, page);
+ 
   const results = await UserModel.find(query)
     .skip((page - 1) * 10)
     .limit(10);

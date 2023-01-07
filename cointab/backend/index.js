@@ -2,6 +2,9 @@ const express = require("express");
 const { connection } = require("./Config/db");
 const cors = require("cors");
 const { userRoute } = require("./Routes/user.routes");
+require("dotenv").config();
+
+const PORT = process.env.PORT ;
 
 const app = express();
 
@@ -18,7 +21,7 @@ app.use("/users",userRoute)
 
 
 
-app.listen(8000, async () => {
+app.listen(PORT, async () => {
   try {
     await connection;
     console.log("connected to db");
@@ -26,5 +29,5 @@ app.listen(8000, async () => {
     console.log("error connection db");
     console.log(err);
   }
-  console.log("server running on 8000");
+  console.log("server running on "+PORT);
 });
